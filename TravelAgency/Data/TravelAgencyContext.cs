@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TravelAgency.Data.Models;
 
 namespace TravelAgency.Data
 {
@@ -26,9 +27,17 @@ namespace TravelAgency.Data
             }
         }
 
+        public virtual DbSet<Customer> Customers { get; set; } = null!;
+        public virtual DbSet<Booking> Bookings { get; set; } = null!;
+        public virtual DbSet<TourPackage> TourPackages { get; set; } = null!;
+        public virtual DbSet<TourPackageGuide> TourPackagesGuides { get; set; } = null!;
+        public virtual DbSet<Guide> Guides { get; set; } = null!;   
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<TourPackageGuide>(e => 
+                e.HasKey(k => new {k.GuideId, k.TourPackageId}));
 
             //modelBuilder.Entity<Guide>().HasData(
             //    new Guide { Id = 1, FullName = "John Doe", Language = Language.Russian },
