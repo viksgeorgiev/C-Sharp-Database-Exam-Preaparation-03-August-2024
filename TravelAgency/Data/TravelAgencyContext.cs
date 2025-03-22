@@ -6,7 +6,7 @@ namespace TravelAgency.Data
 {
     public class TravelAgencyContext : DbContext
     {
-        private const string connectionString = @"Server=DESKTOP-64PRK6F;Database=TravelAgency2025;Trusted_Connection=True; ";
+        private const string connectionString = @"Server=.;Database=TravelAgency2025;Trusted_Connection=True; ";
 
         public TravelAgencyContext()
         {
